@@ -19,11 +19,15 @@ const app = new App(config);
 
 app.setHandler({
     'LAUNCH': function() {
-        this.toIntent('HelloWorldIntent');
+        this.ask('Welcome to my Painting Business. When would you like to schedule an appointment?', 'When would you like to schedule an appointment?');
     },
 
-    'HelloWorldIntent': function() {
-        this.ask('Hello World! What\'s your name?', 'Please tell me your name.');
+    'AppointmentIntent': function(day) {
+        this.ask('Thank you. What is your phone number so I can text you a confirmation of the appointment?', 'What is your phone number?');
+    },
+
+    'PhoneNumberIntent': function(number) {
+        this.tell('Thank you. We have you scheduled for an appointment');
     },
 
     'MyNameIsIntent': function(name) {
